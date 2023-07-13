@@ -1,24 +1,32 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { ThemeProvider } from 'styled-components'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ThemeProvider } from "styled-components";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import reportWebVitals from './reportWebVitals'
+import reportWebVitals from "./reportWebVitals";
 
-import './assets/css/reset.css'
+import "./assets/css/reset.css";
 
-import themes, { GlobalStyle } from 'themes'
+import themes, { GlobalStyle } from "themes";
 
-import Scheduling from './Scheduling/Scheduling'
-
+import Scheduling from "./Scheduling/Scheduling";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Scheduling />,
+  },
+]);
+
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={themes.main}>
       <GlobalStyle />
-      <Scheduling />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </React.StrictMode>
 );
@@ -26,4 +34,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals()
+reportWebVitals();
