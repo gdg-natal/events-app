@@ -1,6 +1,6 @@
 import { CALENDAR_ID, API_KEY } from "config/constants";
 
-import { CalendarDayType } from "pages/Scheduling/types";
+import { CalendarDayType } from "../types";
 
 const API_URL = "https://www.googleapis.com/calendar/v3/calendars/";
 

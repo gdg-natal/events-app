@@ -1,4 +1,4 @@
-import { CalendarDayType } from "pages/Scheduling/types";
+import { CalendarDayType } from "../../types";
 
 type GroupedItems = {
   dateTime: string;
