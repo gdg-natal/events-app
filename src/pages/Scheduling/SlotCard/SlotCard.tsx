@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
 
 import { cutBigString } from "pages/Scheduling/utils";
@@ -6,6 +7,7 @@ import { Box, Text } from "components";
 
 import { TalkTheme, SlotWrapper } from "./SlotCard.styles";
 import { LOCATIONS_COLOR } from "config/constants";
+import { urlFormatString } from "utils";
 
 interface SlotCardProps {
   summary: string;
@@ -45,9 +47,11 @@ const SlotCard = ({
             <TalkTheme type={theme}>{theme}</TalkTheme>
           </Box>
           <Box mb=".5rem">
-            <Text color="grey" as="h2" sizing="sm">
-              {speaker}
-            </Text>
+            <Link to={`/speaker/${urlFormatString(speaker)}`}>
+              <Text color="grey" as="h2" sizing="sm">
+                {speaker}
+              </Text>
+            </Link>
           </Box>
           <Box mb=".5rem" flex="1">
             <Text color="grey" sizing="sm">
