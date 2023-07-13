@@ -9,7 +9,7 @@ import "./assets/css/reset.css";
 
 import themes, { GlobalStyle } from "themes";
 
-import Scheduling from "./Scheduling/Scheduling";
+import Scheduling from "./pages/Scheduling/Scheduling";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
