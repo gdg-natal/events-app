@@ -46,4 +46,11 @@ export type SpeakerType = {
     linkedIn?: string;
     github?: string;
   };
+  talk: {
+    title: string;
+    description: string;
+    stage: string;
+    time: string;
+    type: string;
+  };
 };
