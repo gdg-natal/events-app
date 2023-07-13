@@ -9,7 +9,7 @@ import "./assets/css/reset.css";
 import themes, { GlobalStyle } from "themes";
 
 import Scheduling from "./pages/Scheduling/Scheduling";
-import SpeakerPage from "components/SpeakerPage";
+import SpeakerPage from "pages/SpeakerPage";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
