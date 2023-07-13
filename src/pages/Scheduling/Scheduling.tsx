@@ -1,4 +1,5 @@
-import useScheduling from "./useScheduling";
+import { useContext } from "react";
+import { ScheduleContext } from "context/ScheduleContext";
 
 import { HourType } from "../../types";
 
@@ -9,7 +10,7 @@ import { SlotsHour, TimeTable, Time, Slots } from "./Scheduling.styles";
 import SlotCard from "./SlotCard/SlotCard";
 
 const Scheduling = () => {
-  const { isLoading: calendarLoading, calendar } = useScheduling();
+  const { isLoading: calendarLoading, calendar } = useContext(ScheduleContext);
 
   if (calendarLoading) return <Box>Carregando...</Box>;
 
