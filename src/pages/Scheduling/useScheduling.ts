@@ -4,7 +4,7 @@ import { getCalendar } from "services/google-calendar";
 
 import { groupByDatetime } from "pages/Scheduling/utils";
 
-import { HourType } from "../types";
+import { HourType } from "../../types";
 
 const useScheduling = () => {
   const [isLoading, setIsLoading] = useState(false);

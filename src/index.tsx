@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { ThemeProvider } from "styled-components";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ScheduleContextProvider } from "./context/ScheduleContext";
 import reportWebVitals from "./reportWebVitals";
 
 import "./assets/css/reset.css";
@@ -44,12 +43,10 @@ const router = createBrowserRouter([
 
 root.render(
   <React.StrictMode>
-    <ScheduleContextProvider>
-      <ThemeProvider theme={themes.main}>
-        <GlobalStyle />
-        <RouterProvider router={router} />
-      </ThemeProvider>
-    </ScheduleContextProvider>
+    <ThemeProvider theme={themes.main}>
+      <GlobalStyle />
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

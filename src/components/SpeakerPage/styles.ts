@@ -105,7 +105,7 @@ export const TalkInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 420px;
+  max-width: 460px;
   color: #5f6368;
 
   & > * + * {
