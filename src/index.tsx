@@ -10,6 +10,7 @@ import "./assets/css/reset.css";
 import themes, { GlobalStyle } from "themes";
 
 import Scheduling from "./pages/Scheduling/Scheduling";
+import SpeakerPage from "./pages/Speaker";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Scheduling />,
+  },
+  {
+    path: "/speaker/:id",
+    element: <SpeakerPage />,
   },
 ]);
 
