@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Scheduling />,
   },
   {
-    path: "/speaker/:id",
+    path: "/speaker/:slug",
     element: <SpeakerPage />,
   },
 ]);
