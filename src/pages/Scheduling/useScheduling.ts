@@ -40,7 +40,7 @@ const useScheduling = () => {
 
   return {
     isLoading,
-    calendar,
+    calendar
   };
 };
 

@@ -10,7 +10,9 @@ import useScheduling from "./useScheduling";
 const Scheduling = () => {
   const { isLoading: calendarLoading, calendar } = useScheduling();
 
-  if (calendarLoading) return <Box>Carregando...</Box>;
+  if (calendarLoading) return <Box>Carregando...</Box>
+
+  console.log('cccccc', calendar)
 
   return (
     <TimeTable>
@@ -22,7 +24,7 @@ const Scheduling = () => {
           <Slots>
             {dayHoursEvents.items.map(
               ({ id, summary, description, location }) => (
-                <SlotCard key={id} {...{ summary, description, location }} />
+                <SlotCard key={id} {...{ summary, description, location, time: formatTime(dayHoursEvents.dateTime) }} />
               )
             )}
           </Slots>

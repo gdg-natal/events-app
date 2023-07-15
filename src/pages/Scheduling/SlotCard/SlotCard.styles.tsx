@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 import { TYPE_TALK_COLOR } from "config/constants";
 
-import { Box, TalkTypeTag } from "components";
+import { Box, Text, TalkTypeTag } from "components";
 
 export const SlotWrapper = styled(Box)<{ location: string; type?: string }>`
   grid-area: ${({ location = "" }) =>
@@ -30,3 +30,7 @@ export const TalkTheme = styled(TalkTypeTag).attrs({ sizing: "sm" })<{
   }
 `
 );
+
+export const TalkTitle = styled(Text)`
+  cursor: pointer;
+`

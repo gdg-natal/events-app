@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
 
 import { cutBigString } from "pages/Scheduling/utils";
 
 import { Box, Text } from "components";
 
-import { TalkTheme, SlotWrapper } from "./SlotCard.styles";
+import { TalkTheme, SlotWrapper, TalkTitle } from "./SlotCard.styles";
 import { LOCATIONS_COLOR } from "config/constants";
 import { urlFormatString } from "utils";
 
@@ -13,17 +13,25 @@ interface SlotCardProps {
   summary: string;
   description?: string;
   location: string;
+  time: string;
 }
 
 const SlotCard = ({
   summary: speaker,
   description,
   location,
+  time
 }: SlotCardProps) => {
-  const [title, theme, desc] = (description ?? "").split(" | ") ?? [];
+  const navigate = useNavigate();
+  const [title, theme, desc, picture, bio] = (description ?? "").split(" | ") ?? [];
+  const speakerData = { speaker, title, theme, desc, picture, bio, location, time }
 
   const getLocationColor = (location: string) =>
     LOCATIONS_COLOR[location] ?? LOCATIONS_COLOR.default;
+
+  const onNavigate = () => {
+    navigate('/speaker/ssssssss', { state: { ...speakerData } })
+  }
 
   return (
     <SlotWrapper
@@ -42,16 +50,14 @@ const SlotCard = ({
         <>
           <Box display="flex" alignItems="flex-start" mb=".5rem">
             <Box mr=".5rem">
-              <Text as="h1">{title}</Text>
+              <TalkTitle as="h1" onClick={onNavigate}>{title}</TalkTitle>
             </Box>
             <TalkTheme type={theme}>{theme}</TalkTheme>
           </Box>
           <Box mb=".5rem">
-            <Link to={`/speaker/${urlFormatString(speaker)}`}>
-              <Text color="grey" as="h2" sizing="sm">
-                {speaker}
-              </Text>
-            </Link>
+            <Text color="grey" as="h2" sizing="sm">
+              {speaker}
+            </Text>
           </Box>
           <Box mb=".5rem" flex="1">
             <Text color="grey" sizing="sm">

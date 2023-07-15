@@ -35,22 +35,3 @@ export type HourType = {
   dateTime: string;
   items: CalendarDayType[];
 };
-
-export type SpeakerType = {
-  name: string;
-  bio: string;
-  pictureUrl: string;
-  slug: string;
-  socialLinks?: {
-    instagram?: string;
-    linkedIn?: string;
-    github?: string;
-  };
-  talk: {
-    title: string;
-    description: string;
-    stage: string;
-    time: string;
-    type: string;
-  };
-};
