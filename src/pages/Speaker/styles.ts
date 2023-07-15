@@ -15,6 +15,7 @@ export const Container = styled.main`
 
 export const BackToHomeLink = styled(Text)`
   display: flex;
+  align-items: center;
   font-size: 0.8rem;
 
   @media screen and (min-width: 800px) {

@@ -25,8 +25,6 @@ export default function SpeakerPage() {
   const { state: { title, desc, bio, speaker, picture, theme, location, time } } = useLocation()
   const locationColor = lighten(0.2, getLocationColor(location))
 
-  console.log('eeeeeee', time)
-
   return (
     <Container>
       <Link to="/">

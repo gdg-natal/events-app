@@ -2,7 +2,7 @@ import { HourType } from "../../types";
 
 import { formatTime } from "utils";
 
-import { Box } from "components";
+import { Box, Loading } from "components";
 import { SlotsHour, TimeTable, Time, Slots } from "./Scheduling.styles";
 import SlotCard from "./SlotCard/SlotCard";
 import useScheduling from "./useScheduling";
@@ -10,9 +10,7 @@ import useScheduling from "./useScheduling";
 const Scheduling = () => {
   const { isLoading: calendarLoading, calendar } = useScheduling();
 
-  if (calendarLoading) return <Box>Carregando...</Box>
-
-  console.log('cccccc', calendar)
+  if (calendarLoading) return <Loading />;
 
   return (
     <TimeTable>

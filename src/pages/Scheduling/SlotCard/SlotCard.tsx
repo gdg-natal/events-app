@@ -7,7 +7,6 @@ import { Box, Text } from "components";
 
 import { TalkTheme, SlotWrapper, TalkTitle } from "./SlotCard.styles";
 import { LOCATIONS_COLOR } from "config/constants";
-import { urlFormatString } from "utils";
 
 interface SlotCardProps {
   summary: string;
@@ -30,7 +29,7 @@ const SlotCard = ({
     LOCATIONS_COLOR[location] ?? LOCATIONS_COLOR.default;
 
   const onNavigate = () => {
-    navigate('/speaker/ssssssss', { state: { ...speakerData } })
+    navigate(`/speaker/${speaker.toLowerCase().split(' ').join('-')}`, { state: { ...speakerData } })
   }
 
   return (
