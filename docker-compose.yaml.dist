@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  app:
+    build:
+        context: .
+        target: base
+    volumes:
+      - ./app:/app
+    environment:
+      - HTTPS=false
