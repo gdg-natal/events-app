@@ -1,0 +1,15 @@
+# Yalc
+.yalc
+yalc.lock
+
+# Docker
+docker-compose.yaml
+docker-compose.yml
+env
+
+# IDEs
+*.swp
+.idea/
+.vscode
+
+*.DS_Store
