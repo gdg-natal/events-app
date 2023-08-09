@@ -1,6 +1,8 @@
 'use client'
 import styled, { keyframes } from 'styled-components'
 
+import { ToastStyleType } from '@/app/types/toast.types'
+
 const slideInOut = keyframes`
   0% {
     margin-top: -100%;
@@ -38,7 +40,7 @@ const colors = {
   'info': 'blueLight'
 }
 
-export const Wrapper = styled.div<{ type: 'success' | 'error' | 'warning' | 'info'}>`
+export const Wrapper = styled.div<{ type: ToastStyleType }>`
   position: absolute;
   right: 1rem;
   top: 2rem;

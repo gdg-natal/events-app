@@ -1,23 +1,19 @@
 'use client'
 import { useState, createContext, useContext } from 'react'
 
-type ToastContextType = {
-  isVisible: boolean,
-  message: string,
-  type: 'success' | 'error' | 'warning' | 'info',
-  showToast: (message: string, type: 'success' | 'error' | 'warning' | 'info') => void
-}
+import { ToastStyleType, ToastContextType } from '@/app/types/toast.types'
 
 const initialState = {
   isVisible: false,
   message: '',
-  type: 'info'
+  type: 'info' as ToastStyleType,
+  showToast: () => null
 }
 
 const ToastContext = createContext<ToastContextType>(initialState)
 
 export const ToastProvider = ({ children }: { children: React.ReactElement }) => {
-  const [toast, setToast] = useState<ToastContextType>(initialState)
+  const [toast, setToast] = useState<Omit<ToastContextType, 'showToast'>>({ isVisible: false, message: '', type: 'info' })
 
   const showToast = (message: ToastContextType['message'], type: ToastContextType['type']) => {
     setToast({

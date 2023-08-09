@@ -3,11 +3,13 @@ import GlobalStyle from "./GlobalStyles"
 import { ToastProvider } from "@/app/state/useToast"
 import { Toast } from '@/app/components'
 
-const Template = ({ children }: any) => (
+const Template = ({ children }: { children: React.ReactElement }) => (
   <ToastProvider>
-    <GlobalStyle />
-    <Toast />
-    {children}
+    <>
+      <GlobalStyle />
+      <Toast />
+      {children}
+    </>
   </ToastProvider>
 )
 

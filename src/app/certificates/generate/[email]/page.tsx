@@ -14,8 +14,9 @@ const getParticipant = async (email: string) => {
 }
 
 const Certificate = () => {
-  const [participant, setParticipant] = useState<ParticipantType | null>(null)
-  const { email }: { email: string } = useParams()
+  const [participant, setParticipant] = useState<ParticipantType>()
+  const params: { email?: string } = useParams()
+  const { email = '' } = params
 
   useEffect(() => {
     const fetchParticipant = async () => {
