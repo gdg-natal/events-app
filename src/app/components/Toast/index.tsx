@@ -6,8 +6,6 @@ import { Wrapper } from './styles'
 const Toast = () => {
   const { isVisible, message, type } = useToast()
 
-  console.log('toast', isVisible, message, type)
-
   if (!isVisible) return null
 
   return (
