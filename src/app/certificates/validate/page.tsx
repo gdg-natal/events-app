@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import styled from 'styled-components'
 
+import Logo from '@/app/assets/logo.svg'
+
 import { Button, Input } from '@/app/components'
 import useToast from '@/app/state/useToast'
 
@@ -61,18 +63,21 @@ const ValidateCertificate = () => {
     <Wrapper>
       {!name.length ? (
         <>
+          <Logo />
           <Input
             maxLength={10}
             placeholder="Código validador"
             value={search}
             onChange={handleSearch}
+            mt="1rem"
           />
-          <Button onClick={onSubmit}>Verificar certificado</Button>
+          <Button onClick={onSubmit} mt="1rem">Verificar certificado</Button>
         </>
       ) : (
         <>
-          <p>Este certificado é válido e foi gerado para: <strong>{name}</strong>. Código validador: <strong>{search}</strong>.</p>
-          <Button onClick={onGoBack}>Voltar</Button>
+          <p>Este certificado é válido e foi gerado para: <strong>{name}</strong>.</p>
+          <p>Código validador: <strong>{search}</strong>.</p>
+          <Button onClick={onGoBack} mt="1rem">Voltar</Button>
         </>
       )}
     </Wrapper>
