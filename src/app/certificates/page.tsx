@@ -7,7 +7,9 @@ import Logo from '@/app/assets/logo.svg'
 import useToast from '@/app/state/useToast'
 
 import { Button, Input } from '@/app/components'
-import { Wrapper } from './Certificates.styles'
+import { Form } from './Certificates.styles'
+
+const EMAIL_REGEXP = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i
 
 const validateCertificate = async (email: string) => {
   const response = await fetch(`/api/participant/validate?email=${email}`)
@@ -16,12 +18,15 @@ const validateCertificate = async (email: string) => {
 }
 
 const Certificates = () => {
+  const [isLoading, setLoading] = useState<boolean>(false)
   const [search, setSearch] = useState<string>('')
-  const [loading, setLoading] = useState<boolean>(false)
+  const [error, setError] = useState<boolean>(!search.length)
   const router = useRouter()
   const { showToast } = useToast()
-  
-  const onSubmit = async () => {
+
+  const onSubmit = async (event: React.FormEvent) => {
+    event.preventDefault()
+
     try {
       setLoading(true)
       const response = await validateCertificate(search)
@@ -46,16 +51,35 @@ const Certificates = () => {
     }
   }
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const { value } = event.target
+
+    validate(value)
+    setSearch(value)
+  }
+
+  const validate = (value: string): void => {
+    let error = false
+
+    if (!value.match(EMAIL_REGEXP)) error = true
+    
+    setError(error)
+  }
+
   return (
-    <Wrapper>
+    <Form onSubmit={onSubmit}>
       <Logo />
       <Input
-        placeholder="eu@exemplo.com"
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearch(e.target.value)}
         mt="1rem"
+        placeholder="eu@exemplo.com"
+        aria-invalid={error}
+        value={search}
+        onChange={handleChange}
       />
-      <Button onClick={onSubmit} mt="1rem">{loading ? 'Carregando...' : 'Gerar certificado'}</Button>
-    </Wrapper>
+      <Button mt="1rem" disabled={error}>
+        {isLoading ? 'Carregando...' : 'Gerar certificado'}
+      </Button>
+    </Form>
   )
 }
 

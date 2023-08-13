@@ -12,6 +12,10 @@ const Input = styled.input<SpaceProps>`
   &:focus {
     outline: none;
   }
+
+  &[aria-invalid=true] {
+    border-color: var(--colors-red);
+  }
 `
 
 export default Input

@@ -11,6 +11,11 @@ const Button = styled.button<SpaceProps>`
   background: var(--colors-blue);
   border: none;
   border-radius: 2rem;
+
+  &:disabled {
+    cursor: not-allowed;
+    background: var(--colors-grey);
+  }
 `
 
 export default Button

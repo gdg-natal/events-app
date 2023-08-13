@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import bgVector from '@/app/assets/bg-vector.svg'
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   height: 100%;
   display: flex;
   flex-direction: column;

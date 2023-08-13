@@ -1,19 +1,12 @@
 'use client'
 import { useState } from 'react'
-import styled from 'styled-components'
+
+import { Wrapper } from './styles'
 
 import Logo from '@/app/assets/logo.svg'
 
 import { Button, Input } from '@/app/components'
 import useToast from '@/app/state/useToast'
-
-const Wrapper = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`
 
 const validateCertificate = async (id: string) => {
   const response = await fetch(`/api/participant/validate?id=${id}`)
@@ -23,11 +16,13 @@ const validateCertificate = async (id: string) => {
 
 const ValidateCertificate = () => {
   const [search, setSearch] = useState('')
+  const [isLoading, setLoading] = useState(false)
   const [name, setName] = useState('')
   const { showToast } = useToast()
 
   const onSubmit = async () => {
     try {
+      setLoading(true)
       const response = await validateCertificate(search)
 
       if (response.error) {
@@ -45,6 +40,8 @@ const ValidateCertificate = () => {
       }
 
       showToast('Erro ao validar certificado.', 'error')
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -59,6 +56,8 @@ const ValidateCertificate = () => {
     setSearch('')
   }
 
+  console.log('eeeee', search.length)
+
   return (
     <Wrapper>
       {!name.length ? (
@@ -71,13 +70,17 @@ const ValidateCertificate = () => {
             onChange={handleSearch}
             mt="1rem"
           />
-          <Button onClick={onSubmit} mt="1rem">Verificar certificado</Button>
+          <Button
+            mt="1rem"
+            onClick={onSubmit}
+            disabled={search.length < 10 || isLoading}
+          >{isLoading ? 'Carregando...' : 'Verificar certificado'}</Button>
         </>
       ) : (
         <>
           <p>Este certificado é válido e foi gerado para: <strong>{name}</strong>.</p>
           <p>Código validador: <strong>{search}</strong>.</p>
-          <Button onClick={onGoBack} mt="1rem">Voltar</Button>
+          <Button onClick={onGoBack} mt="1rem" >Voltar</Button>
         </>
       )}
     </Wrapper>
