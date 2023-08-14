@@ -1,9 +1,10 @@
 'use client'
 import { useState } from 'react'
+import Image from 'next/image'
 
 import { Wrapper } from './styles'
 
-import Logo from '@/app/assets/logo.svg'
+import logo from '@/app/assets/logo.svg'
 
 import { Button, Input } from '@/app/components'
 import useToast from '@/app/state/useToast'
@@ -56,13 +57,16 @@ const ValidateCertificate = () => {
     setSearch('')
   }
 
-  console.log('eeeee', search.length)
-
   return (
     <Wrapper>
       {!name.length ? (
         <>
-          <Logo />
+          <Image
+            src={logo}
+            width={300}
+            height={200}
+            alt="Logo"
+          />
           <Input
             maxLength={10}
             placeholder="Código validador"

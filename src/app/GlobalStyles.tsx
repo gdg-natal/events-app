@@ -1,6 +1,8 @@
 'use client'
 import { createGlobalStyle } from 'styled-components'
 
+import bgVector from '@/app/assets/bg-vector.svg'
+
 const sizing = {
   xxsm: '.25rem',
   xsm: '.5rem',
@@ -81,6 +83,10 @@ const GlobalStyle = createGlobalStyle`
 
   iframe {
     border: none;
+  }
+
+  body {
+    background: url('${bgVector}') no-repeat right bottom 50px;
   }
 `
 

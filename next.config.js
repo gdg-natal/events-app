@@ -1,15 +1,12 @@
 /** @type {import('next').NextConfig} */
+const withImages = require('next-images')
 
-const nextConfig = {
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
-      use: ['@svgr/webpack'],
-    })
-
-    return config
+const nextConfig = withImages({
+  compiler: {
+    styledComponents:  {
+      displayName: true
+    }
   }
-}
+})
 
 module.exports = nextConfig

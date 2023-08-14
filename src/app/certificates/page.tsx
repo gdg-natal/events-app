@@ -1,8 +1,9 @@
 'use client'
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
-import Logo from '@/app/assets/logo.svg'
+import logo from '@/app/assets/logo.svg'
 
 import useToast from '@/app/state/useToast'
 
@@ -68,11 +69,16 @@ const Certificates = () => {
 
   return (
     <Form onSubmit={onSubmit}>
-      <Logo />
+      <Image
+        src={logo}
+        width={300}
+        height={200}
+        alt="Logo"
+      />
       <Input
         mt="1rem"
         placeholder="eu@exemplo.com"
-        aria-invalid={error}
+        aria-invalid={search.length && error}
         value={search}
         onChange={handleChange}
       />
