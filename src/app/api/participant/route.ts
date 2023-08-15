@@ -6,7 +6,7 @@ import { getParticipants } from '@/app/api/services/participants'
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
-  const email = searchParams.get('email')
+  const email = searchParams.get('email')?.toLowerCase()
 
   const participants = await getParticipants()
   const participant = participants.find((p: ParticipantType) => p.email === email)
@@ -16,5 +16,4 @@ export async function GET(req: Request) {
   }
 
   return NextResponse.json(participant, { status: 200 })
-
 }
