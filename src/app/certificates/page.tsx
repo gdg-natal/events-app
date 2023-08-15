@@ -78,7 +78,7 @@ const Certificates = () => {
       <Input
         mt="1rem"
         placeholder="eu@exemplo.com"
-        aria-invalid={search.length && error}
+        aria-invalid={!!search.length && error}
         value={search}
         onChange={handleChange}
       />
