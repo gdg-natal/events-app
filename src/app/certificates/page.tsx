@@ -82,7 +82,7 @@ const Certificates = () => {
         value={search}
         onChange={handleChange}
       />
-      <Button mt="1rem" disabled={error}>
+      <Button mt="1rem" disabled={error || isLoading}>
         {isLoading ? 'Carregando...' : 'Gerar certificado'}
       </Button>
     </Form>
