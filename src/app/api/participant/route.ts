@@ -9,7 +9,7 @@ export async function GET(req: Request) {
   const email = searchParams.get('email')?.toLowerCase()
 
   const participants = await getParticipants()
-  const participant = participants.find((p: ParticipantType) => p.email === email)
+  const participant = participants.find((p: ParticipantType) => p.email.toLowerCase() === email)
 
   if (!participant) {
     return NextResponse.json('Participant not found.', { status: 404 })
